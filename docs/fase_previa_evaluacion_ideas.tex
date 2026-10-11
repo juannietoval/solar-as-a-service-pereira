@@ -1,0 +1,431 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- PAQUETES ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
+\usepackage[margin=2.54cm]{geometry} % Margen estándar APA (1 pulgada / 2.54 cm)
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{pifont}       % Bullets con cuadros rellenos elegantes (\ding{110})
+\usepackage{titlesec}     % Tipografía sans-serif para títulos
+\usepackage{lmodern}      % Latin Modern Sans y Serif de alta fidelidad
+\usepackage{setspace}     % Control de interlineado estilo APA
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{multirow}
+
+% Permitir cortes limpios en URLs sin guiones que rompan enlaces
+\def\UrlBreaks{\do\/\do-\do_\do.\do=\do\?\do\&}
+
+% Interlineado 1.15 para lectura técnica fluida (estándar APA para informes)
+\setstretch{1.15}
+
+% --- TIPOGRAFÍA DE SECCIONES (Estilo APA 7 - Sans-serif, Negrita) ---
+\titleformat{\section}{\sffamily\Large\bfseries\color{utpdark}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{utpdark}}{\thesubsection.}{0.6em}{}
+
+% --- COLORES NEUTROS E INSTITUCIONALES (El azul se limita estrictamente al logo UTP) ---
+\definecolor{utpdark}{RGB}{20, 30, 48}           % Pizarra oscura neutra para títulos
+\definecolor{codegray}{RGB}{108, 122, 142}       % Gris para fechas y encabezados
+\definecolor{linkneutral}{RGB}{45, 60, 80}        % Enlaces neutros oscuros
+\definecolor{bgcelda}{RGB}{249, 251, 253}        % Fondo alternado neutro muy suave
+
+% --- PALETA TEMÁTICA CLARA Y LUMINOSA ---
+% 1. Movilidad Eléctrica y Transporte (Idea 1: Infraestructura de Carga) -> Lavanda Claro y Púrpura Amatista
+\definecolor{bgTrans}{HTML}{F6EFFB}              % Lavanda pastel muy claro y luminoso
+\definecolor{colorTrans}{HTML}{6C3483}           % Púrpura amatista elegante y claro
+
+% 2. Delivery y Logística (Idea 2: Delivery Humanitario) -> Melocotón Claro y Naranja Cálido
+\definecolor{bgDelivery}{HTML}{FFF2E6}           % Melocotón / Durazno pastel muy suave
+\definecolor{colorDelivery}{HTML}{A04000}        % Naranja siena cálido y claro
+
+% 3. Residuos y Saneamiento (Idea 3: EcoRutas del Eje) -> Menta Pastel Claro y Verde Esmeralda
+\definecolor{bgEco}{HTML}{EAF7EE}                % Verde menta muy claro y fresco
+\definecolor{colorEco}{HTML}{2E7D32}             % Verde esmeralda vivo (usado también en bullets)
+
+% 4. Gestión del Riesgo y Resiliencia (Idea 4: Alerta Pereira) -> Coral Rosa Claro y Carmín Suave
+\definecolor{bgAlerta}{HTML}{FEEDEE}             % Rosa coral muy claro y suave
+\definecolor{colorAlerta}{HTML}{A93226}          % Carmín / Coral claro y agradable
+
+% 5. Energía y Renovables (Idea 5: Solar as a Service) -> Amarillo y Dorado Solar Cálido (Solo para la tabla)
+\definecolor{bgSolar}{HTML}{FEF9C3}              % Amarillo solar pastel muy claro y luminoso
+\definecolor{colorSolar}{HTML}{B47D00}           % Amarillo dorado solar equilibrado (sin tono tostado oscuro)
+
+% Variables dinámicas para el color de la ficha activa
+\colorlet{coloractualficha}{utpdark}
+\colorlet{bgactualficha}{bgcelda}
+
+\hypersetup{colorlinks=true, linkcolor=linkneutral, citecolor=linkneutral, urlcolor=linkneutral}
+
+% --- COMANDO REUTILIZABLE PARA FICHAS (10 campos oficiales con espaciado amplio y sans-serif) ---
+\newcommand{\fichaactividad}[9]{%
+    \def\fIdea{#1}%
+    \def\fSector{#2}%
+    \def\fMega{#3}%
+    \def\fProb{#4}%
+    \def\fPobl{#5}%
+    \def\fProd{#6}%
+    \def\fInno{#7}%
+    \def\fPere{#8}%
+    \def\fFuen{#9}%
+    \fichaactividadb%
+}
+\newcommand{\fichaactividadb}[1]{%
+\begin{table}[H]
+\centering
+\sffamily
+\renewcommand{\arraystretch}{1.52}
+\setlength{\tabcolsep}{9pt}
+\small
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash\bfseries\color{white}\columncolor{coloractualficha}\hsize=0.32\hsize}X|>{\arraybackslash\hsize=0.68\hsize}X|}
+\hline
+\mbox{IDEA N°} & \cellcolor{bgactualficha}\textbf{\color{coloractualficha}\fIdea} \\
+\hline
+Sector & \fSector \\
+\hline
+Megatendencia asociada (y tema de la Actividad 3) & \fMega \\
+\hline
+Problema o necesidad post-terremoto que atiende & \fProb \\
+\hline
+Población objetivo / beneficiada & \fPobl \\
+\hline
+Producto o servicio propuesto & \fProd \\
+\hline
+\mbox{¿Dónde está} la innovación? & \fInno \\
+\hline
+\mbox{¿Por qué podría} funcionar en Pereira ahora? & \fPere \\
+\hline
+Estudio o fuente que la respalda & \fFuen \\
+\hline
+Origen: ¿viene de la Actividad 3 o es nueva? & #1 \\
+\hline
+\end{tabularx}
+\end{table}
+}
+
+% --- ENCABEZADO / PIE ESTILO APA 7 (Número de página superior derecho) ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{codegray} Formulación y Evaluación de Proyectos -- Actividad N° 4}
+\fancyhead[R]{\small\sffamily\bfseries\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{document}
+
+% ================================================================
+%                   PORTADA ESTILO APA 7 (ESTUDIANTE)
+% ================================================================
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+    
+    \vspace*{0.5cm}
+    
+    % Logotipo institucional UTP
+    \includegraphics[width=5.5cm]{1.UTP_color.png}\\[1.6cm]
+    
+    % Título del trabajo (En negrita según norma APA 7)
+    {\LARGE\bfseries\sffamily\color{utpdark} Oportunidades de Negocio para Pereira Post-Terremoto}\\[0.4cm]
+    {\large\sffamily\color{codegray} Actividad N° 4: Identificación, Priorización y Formulación de Oportunidades}\\[2.0cm]
+    
+    % Datos de los Estudiantes
+    {\normalsize\sffamily
+        \textbf{Presentado por:}\\[0.3cm]
+        Juan Esteban Nieto Valencia\\[0.15cm]
+        José Daniel Ruíz Gómez\\[0.15cm]
+        Jose David Toro Naranjo
+    }\\[2.0cm]
+    
+    % Datos institucionales y de la asignatura
+    \vfill
+    {\normalsize\sffamily
+        \textbf{Asignatura:} Formulación y Evaluación de Proyectos\\[0.15cm]
+        \textbf{Programa:} Ingeniería Eléctrica\\[0.15cm]
+        \textbf{Facultad:} Facultad de Ingenierías\\[0.25cm]
+        \textbf{Universidad Tecnológica de Pereira (UTP)}\\[0.15cm]
+        Pereira, Risaralda\\[0.15cm]
+        \today
+    }
+    \vspace*{1.0cm}
+\end{titlepage}
+
+\newpage
+
+% ================================================================
+%                    SECCIÓN 1: FICHAS TÉCNICAS
+% ================================================================
+\section{Fichas Técnicas de las Ideas de Negocio}
+
+% ---------- FICHA 1: Movilidad y Transporte (5° Lugar - Peor valorada) ----------
+\colorlet{coloractualficha}{colorTrans}
+\colorlet{bgactualficha}{bgTrans}
+\fichaactividad
+{1 -- Infraestructura de Carga Solar para Movilidad Eléctrica}
+{Movilidad y Transporte Sostenible}
+{Transición hacia energías renovables y movilidad sostenible: adopción acelerada de vehículos eléctricos, necesidad de optimización solar y descarbonización urbana del transporte (Tema: Sostenibilidad y energía).}
+{Déficit de infraestructura de carga rápida y pública en Pereira y el Eje Cafetero agravado por la congestión y reconstrucción vial post-terremoto, sumado a la contradicción de recargar vehículos limpios con electricidad de fuentes no renovables de la red común.}
+{Propietarios de autos y motos eléctricas en Pereira; flotas comerciales de última milla (mensajería/domicilios); y turistas que cruzan el Eje Cafetero en vehículos eléctricos o híbridos enchufables.}
+{Electrolineras solares equipadas con marquesinas fotovoltaicas y baterías de respaldo para carga rápida, integradas con app móvil (reserva de turnos y pago digital) y zonas de espera con café y conectividad.}
+{Carga 100\,\% renovable independiente de la red convencional sin sobrecargar subestaciones locales, modelo multimodal (autos, motos, micro-movilidad) y optimización de tiempos de espera mediante reserva por app.}
+{Pereira es el nodo logístico vial estratégico que conecta Medellín, Bogotá y Cali. Además, cuenta con incentivos locales de pico y placa, creciente matrícula de vehículos eléctricos y vocación turística.}
+{UPME -- SIMEC, ``Cobertura de energía eléctrica'', 2026. Disponible en: \url{https://www.upme.gov.co/simec/energia-electrica/cobertura/}. \newline
+UPME -- SIMEC, ``Proyección de Demanda de Energía'', 2026. Disponible en: \url{https://www.upme.gov.co/simec/planeacion-energetica/proyeccion-de-demanda-v2/}. \newline
+Alcaldía de Pereira, ``Plan de Desarrollo 2024--2027''. Disponible en: \url{https://www.pereira.gov.co/documentos/1400/plan-de-desarrollo-2024-2027/}.}
+{Proviene de la Actividad 3.}
+
+\newpage
+
+% ---------- FICHA 2: Delivery y Logística (4° Lugar) ----------
+\colorlet{coloractualficha}{colorDelivery}
+\colorlet{bgactualficha}{bgDelivery}
+\fichaactividad
+{2 -- Delivery}
+{Logística y Delivery Humanitario}
+{Auge de las aplicaciones de delivery en Colombia y digitalización de la logística de última milla (Tema: Nuevo -- no proviene de la Actividad 3).}
+{Dificultad para acceder a centros de acopio y recibir productos de primera necesidad durante la emergencia post-terremoto, especialmente por distancia, derrumbes o afectaciones en las vías de acceso.}
+{Personas afectadas por emergencias, especialmente habitantes de veredas, zonas rurales y sectores alejados de los centros de atención.}
+{Aplicación móvil que permite solicitar y coordinar la entrega de alimentos, agua, medicamentos, cobijas y otros productos de primera necesidad desde centros de acopio hasta las personas afectadas.}
+{En adaptar el modelo de delivery tradicional a la atención de emergencias, conectando centros de acopio, entidades públicas, voluntarios y personas afectadas para llevar ayuda directamente hasta donde se necesita.}
+{Pereira cuenta con zonas urbanas y rurales con diferentes niveles de accesibilidad. La plataforma permitiría atender a personas que tengan dificultades para desplazarse hasta los centros de acopio y podría adaptarse posteriormente a otras emergencias y ciudades.}
+{ACIS Colombia, ``6 tendencias que marcarán el delivery y la última milla para 2026'', 2026. Disponible en: \url{https://www.acis.org.co/blog/noticias-2/6-tendencias-que-marcaran-el-delivery-y-la-ultima-milla-para-2026-5452}.}
+{Idea nueva (no proviene de la Actividad 3).}
+
+\newpage
+
+% ---------- FICHA 3: Residuos y Saneamiento - EcoRutas del Eje (3° Lugar) ----------
+\colorlet{coloractualficha}{colorEco}
+\colorlet{bgactualficha}{bgEco}
+\fichaactividad
+{3 -- EcoRutas del Eje (Optimización de Residuos)}
+{Saneamiento Ambiental y Gestión de Residuos}
+{Ciudades inteligentes basadas en datos para aumentar la resiliencia urbana (Tema: Ciudades inteligentes y resiliencia).}
+{El escaso aprovechamiento de los residuos sólidos y la acumulación de escombros y desechos post-terremoto, junto con la necesidad de hacer más eficiente su recolección, clasificación y aprovechamiento.}
+{Pobladores, condominios, tiendas, empresas, recicladores informales, empresas de aseo y la alcaldía.}
+{Plataforma digital vinculada a sensores que vigilan el nivel de los contenedores y permiten diseñar rutas de recolección en función de la cantidad de residuos, al tiempo que facilitan la conexión entre ciudadanos y recicladores.}
+{La innovación consiste en usar datos en tiempo real para cambiar y optimizar las rutas de recolección, evitar recorridos innecesarios y facilitar que más residuos aprovechables lleguen al proceso de reciclaje.}
+{Pereira busca elevar la tasa de aprovechamiento de residuos del 1,5\,\% al 4\,\% para el año 2027 y, para ello, ya está poniendo en marcha nuevas tecnologías y modelos de gestión. Esto muestra una necesidad específica a la que una solución inteligente podría aportar.}
+{Alcaldía de Pereira, ``Plan de Gestión Integral de Residuos Sólidos (PGIRS)'' y Banco Interamericano de Desarrollo (BID), Proyecto RG-T4704. Disponible en: \url{https://www.iadb.org/es/proyecto/RG-T4704}.}
+{Proviene de la Actividad 3.}
+
+\newpage
+
+% ---------- FICHA 4: Gestión del Riesgo y Resiliencia - AlertaPereira (2° Lugar) ----------
+\colorlet{coloractualficha}{colorAlerta}
+\colorlet{bgactualficha}{bgAlerta}
+\fichaactividad
+{4 -- AlertaPereira (Prevención y Alerta Temprana)}
+{Gestión del Riesgo y Resiliencia Urbana}
+{Ciudades inteligentes basadas en datos para aumentar la resiliencia urbana (Tema: Ciudades inteligentes y resiliencia).}
+{La necesidad de fortalecer la prevención y la respuesta ante los riesgos naturales y réplicas tras el terremoto de 2026, a través de información oportuna sobre inundaciones, crecientes y movimientos de tierra.}
+{Población de zonas vulnerables, comunidades próximas a los ríos y laderas, comercios, empresas, bomberos y ayuntamientos.}
+{Plataforma web y app móvil que integra sensores de lluvia, nivel de agua y movimiento de laderas con mapas de riesgo para generar alertas y facilitar la coordinación de autoridades y ciudadanos.}
+{La innovación consiste en integrar distintas fuentes de datos en una sola plataforma para transformar la información sobre riesgos en alertas comprensibles y oportunas, facilitando la toma de decisiones antes y durante una emergencia.}
+{Pereira ya tiene contemplada la gestión del riesgo como una prioridad y dispone de sistemas de monitoreo y alerta. La propuesta podría añadir a estas herramientas una plataforma que integre la información y facilite su acceso a ciudadanos y organismos de respuesta.}
+{Banco Interamericano de Desarrollo (BID), ``Proyecto RG-T4704: Ciudades Inteligentes y Resiliencia Urbana'', 2026. Disponible en: \url{https://www.iadb.org/es/proyecto/RG-T4704}.}
+{Proviene de la Actividad 3.}
+
+\newpage
+
+% ---------- FICHA 5: Energía y Renovables - Solar as a Service (1° Lugar - Ganadora) ----------
+\colorlet{coloractualficha}{colorSolar}
+\colorlet{bgactualficha}{bgSolar}
+\fichaactividad
+{5 -- Solar as a Service (Energía Solar por Suscripción)}
+{Energético y Energías Renovables}
+{Expansión de las energías renovables, generación distribuida y electrificación sostenible (Tema: Sostenibilidad y energía).}
+{Tras el terremoto de 2026 y la vulnerabilidad de la infraestructura eléctrica centralizada, hogares y pequeños negocios enfrentan cortes e incrementos tarifarios. Se requiere una alternativa de generación distribuida que reduzca costos y brinde respaldo energético sin requerir altas inversiones iniciales de capital.}
+{Hogares, fincas, pequeños comercios, restaurantes, productores rurales y pequeñas empresas de Pereira y su zona rural.}
+{Diseño, instalación, financiación, monitoreo y mantenimiento de sistemas solares fotovoltaicos adaptados al consumo del cliente, bajo el modelo de suscripción mensual (``solar como servicio''), reduciendo la inversión inicial a cero.}
+{No limitarse a vender paneles. Ofrece solución integral: diagnóstico energético, diseño a la medida, financiación propia o leasing, monitoreo en tiempo real y mantenimiento garantizado con pago periódico inferior a la factura previa.}
+{Pereira combina una importante zona urbana con un extenso territorio campestre y rural con buena radiación constante. El aumento de tarifas locales hace viable un esquema donde el cliente ahorra desde el primer mes sin endeudamiento directo.}
+{UPME -- SIMEC, ``Cobertura de energía eléctrica'', 2026. Disponible en: \url{https://www.upme.gov.co/simec/energia-electrica/cobertura/}. \newline
+UPME -- SIMEC, ``Proyección de Demanda de Energía'', 2026. Disponible en: \url{https://www.upme.gov.co/simec/planeacion-energetica/proyeccion-de-demanda-v2/}. \newline
+Alcaldía de Pereira, ``Plan de Desarrollo 2024--2027''. Disponible en: \url{https://www.pereira.gov.co/documentos/1400/plan-de-desarrollo-2024-2027/}.}
+{Proviene de la Actividad 3.}
+
+% ================================================================
+%              SECCIÓN 2: MATRIZ DE EVALUACIÓN PONDERADA
+% ================================================================
+\newpage
+\section{Matriz de Evaluación Ponderada y Priorización}
+
+De acuerdo con las directrices de la guía docente de la Actividad N° 4, las cinco oportunidades de negocio fueron comparadas mediante una matriz de evaluación multicriterio ponderada con pesos porcentuales que totalizan el 100\,\%. 
+
+Cada criterio fue evaluado de 1 (muy bajo) a 5 (muy alto) por los tres integrantes del equipo de manera individual. En la Tabla~\ref{tab:matriz_ponderada} se presentan las calificaciones promedio consolidadas por criterio, la ponderación oficial establecida y el puntaje ponderado final obtenido por cada propuesta:
+
+\begin{table}[H]
+\centering
+\sffamily
+\caption{Matriz de evaluación ponderada oficial (organizada de menor a mayor viabilidad).}
+\label{tab:matriz_ponderada}
+\vspace{0.2cm}
+\footnotesize
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{6pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash\bfseries}p{5.0cm} >{\centering\arraybackslash\bfseries}p{1.2cm} *{5}{>{\centering\arraybackslash}X}}
+\toprule
+\textbf{Criterio de Evaluación} & \textbf{Peso} & 
+\textbf{\color{colorTrans}Idea 1} & 
+\textbf{\color{colorDelivery}Idea 2} & 
+\textbf{\color{colorEco}Idea 3} & 
+\textbf{\color{colorAlerta}Idea 4} & 
+\textbf{\color{colorSolar}Idea 5} \\
+ & & 
+\scriptsize\color{colorTrans}Carga Solar & 
+\scriptsize\color{colorDelivery}Delivery & 
+\scriptsize\color{colorEco}EcoRutas & 
+\scriptsize\color{colorAlerta}Alerta-Pereira & 
+\scriptsize\color{colorSolar}Solar (Ganadora) \\
+\midrule
+\rowcolor{bgcelda}
+Pertinencia para la Pereira post-terremoto & 20\,\% & 3.00 & 4.33 & 4.00 & 4.33 & \textbf{4.67} \\
+Permanencia de la necesidad (no solo coyuntural) & 15\,\% & 3.00 & 2.00 & 3.67 & 4.00 & \textbf{4.67} \\
+\rowcolor{bgcelda}
+Nivel de innovación & 15\,\% & 3.67 & 4.00 & 3.00 & 4.00 & \textbf{4.00} \\
+Población que podría beneficiarse & 10\,\% & 3.00 & 4.00 & 4.00 & 4.33 & \textbf{4.33} \\
+\rowcolor{bgcelda}
+Potencial de mercado y capacidad de pago & 15\,\% & 2.00 & 2.00 & 3.00 & 3.00 & \textbf{4.33} \\
+Posibilidad de generar valor (económico, social, ambiental) & 15\,\% & 3.00 & 3.00 & 3.33 & 4.00 & \textbf{4.67} \\
+\rowcolor{bgcelda}
+Viabilidad para que el equipo la formule este semestre & 10\,\% & 3.00 & 3.00 & 3.33 & 3.67 & \textbf{4.33} \\
+\midrule
+\textbf{Puntaje total ponderado (sobre 5.00)} & \textbf{100\,\%} & 
+\cellcolor{bgTrans}\textbf{\color{colorTrans}2.95} & 
+\cellcolor{bgDelivery}\textbf{\color{colorDelivery}3.22} & 
+\cellcolor{bgEco}\textbf{\color{colorEco}3.48} & 
+\cellcolor{bgAlerta}\textbf{\color{colorAlerta}3.92} & 
+\cellcolor{bgSolar}\textbf{\color{colorSolar}4.45} \\
+\midrule
+\textbf{Ranking final} & --- & 
+\cellcolor{bgTrans}\textbf{\color{colorTrans}5°} & 
+\cellcolor{bgDelivery}\textbf{\color{colorDelivery}4°} & 
+\cellcolor{bgEco}\textbf{\color{colorEco}3°} & 
+\cellcolor{bgAlerta}\textbf{\color{colorAlerta}2°} & 
+\cellcolor{bgSolar}\textbf{\color{colorSolar}1° (Ganadora)} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Detalle de puntuación por evaluador (escala 1--5)}
+
+Para garantizar la trazabilidad y rigor del trabajo colaborativo, la Tabla~\ref{tab:evaluadores} detalla la sumatoria de puntos otorgada por cada uno de los tres evaluadores en los siete criterios (sobre un máximo de 35 puntos por idea), así como el total consolidado del equipo (sobre 105 puntos):
+
+\begin{table}[H]
+\centering
+\sffamily
+\caption{Consolidado de puntuación individual por evaluador (suma sobre 35 por idea).}
+\label{tab:evaluadores}
+\vspace{0.2cm}
+\small
+\renewcommand{\arraystretch}{1.45}
+\setlength{\tabcolsep}{7pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash\bfseries}p{4.2cm} *{5}{>{\centering\arraybackslash}X} >{\centering\arraybackslash\bfseries}p{1.4cm}}
+\toprule
+\textbf{Evaluador} & 
+\textbf{\color{colorTrans}Idea 1} & 
+\textbf{\color{colorDelivery}Idea 2} & 
+\textbf{\color{colorEco}Idea 3} & 
+\textbf{\color{colorAlerta}Idea 4} & 
+\textbf{\color{colorSolar}Idea 5} & 
+\textbf{Total} \\
+ & 
+\scriptsize\color{colorTrans}Carga Solar & 
+\scriptsize\color{colorDelivery}Delivery & 
+\scriptsize\color{colorEco}EcoRutas & 
+\scriptsize\color{colorAlerta}Alerta-Pereira & 
+\scriptsize\color{colorSolar}Solar (Ganadora) & \\
+\midrule
+\rowcolor{bgcelda}
+Juan Esteban Nieto Valencia & 21 & 23 & 26 & 29 & \textbf{34} & 133 \\
+José Daniel Ruíz Gómez & 20 & 22 & 24 & 27 & \textbf{28} & 121 \\
+\rowcolor{bgcelda}
+Jose David Toro Naranjo & 21 & 22 & 23 & 26 & \textbf{31} & 123 \\
+\midrule
+\textbf{Total consolidado (sobre 105)} & 
+\cellcolor{bgTrans}\textbf{\color{colorTrans}62} & 
+\cellcolor{bgDelivery}\textbf{\color{colorDelivery}67} & 
+\cellcolor{bgEco}\textbf{\color{colorEco}73} & 
+\cellcolor{bgAlerta}\textbf{\color{colorAlerta}82} & 
+\cellcolor{bgSolar}\textbf{\color{colorSolar}93} & 
+\textbf{377} \\
+\textbf{Promedio simple (sobre 5.00)} & 
+2.95 & 3.19 & 3.48 & 3.90 & 
+\cellcolor{bgSolar}\textbf{\color{colorSolar}4.43} & 
+3.59 \\
+\textbf{Puntaje ponderado final} & 
+\cellcolor{bgTrans}\textbf{\color{colorTrans}2.95} & 
+\cellcolor{bgDelivery}\textbf{\color{colorDelivery}3.22} & 
+\cellcolor{bgEco}\textbf{\color{colorEco}3.48} & 
+\cellcolor{bgAlerta}\textbf{\color{colorAlerta}3.92} & 
+\cellcolor{bgSolar}\textbf{\color{colorSolar}4.45} & 
+--- \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ================================================================
+%           SECCIÓN 3: JUSTIFICACIÓN DE LA SELECCIÓN
+% ================================================================
+\section{Justificación de la Idea Seleccionada}
+
+\noindent\textbf{\sffamily\color{utpdark}\large Idea ganadora: Solar as a Service (Idea 5) -- Puntaje Ponderado: 4.45/5.00 -- Consolidado: 93/105}
+
+\vspace{0.3cm}
+
+La oportunidad de negocio \textbf{Solar as a Service (Idea 5)} obtuvo el primer lugar en la matriz ponderada oficial (puntaje de 4.45 sobre 5.00 y 93 puntos acumulados de los tres evaluadores). Frente a las otras cuatro propuestas evaluadas, esta idea demuestra superioridad integral en todos los criterios de formulación:
+
+\begin{itemize}[leftmargin=1.6em, label={\small\color{colorEco}\ding{110}}]
+    \item \textbf{Pertinencia para la Pereira post-terremoto (Calificación: 4.67/5.00, aporte: 0.93/1.00):} Tras el terremoto de 2026, la vulnerabilidad de las redes de transmisión y distribución convencionales evidenció la necesidad crítica de contar con sistemas de generación distribuida in situ. Solar as a Service ofrece resiliencia energética tanto en áreas urbanas como rurales de Pereira, alineándose directamente con las metas del Plan de Desarrollo Municipal 2024--2027.
+    
+    \item \textbf{Permanencia de la necesidad no coyuntural (Calificación: 4.67/5.00, aporte: 0.70/0.75):} A diferencia de soluciones de asistencia temporal (como la Idea 2 de delivery humanitario, cuya demanda decrece superada la fase de auxilio inmediato), la necesidad de ahorro energético y autosuficiencia frente a las tarifas de energía eléctrica es de carácter estructural y permanente, perdurando a lo largo de toda la etapa de reconstrucción y consolidación de la ciudad.
+    
+    \item \textbf{Nivel de innovación (Calificación: 4.00/5.00, aporte: 0.60/0.75):} Aunque la tecnología fotovoltaica es madura, la innovación disruptiva radica en el modelo de negocio: eliminar la barrera de inversión inicial de capital (CAPEX cero) transformando la energía solar en un servicio por suscripción mensual indexado a un ahorro garantizado frente a la factura convencional de la red.
+    
+    \item \textbf{Población beneficiada (Calificación: 4.33/5.00, aporte: 0.43/0.50):} Mercado objetivo amplio y con capacidad real de pago, que abarca estratos residenciales medios-altos, condominios campestres, fincas turísticas y cafeteras, así como pymes comerciales e industriales del área metropolitana y el corredor Pereira--Cerritos.
+    
+    \item \textbf{Potencial de mercado y capacidad de pago (Calificación: 4.33/5.00, aporte: 0.65/0.75):} Dado que la cuota de suscripción mensual es inferior al valor de la factura eléctrica actual del usuario, el cliente percibe ahorro neto de liquidez desde el primer mes de operación, garantizando una alta tasa de conversión y bajo riesgo de impago.
+    
+    \item \textbf{Posibilidad de generar valor multidimensional (Calificación: 4.67/5.00, aporte: 0.70/0.75):} Genera valor económico directo para el usuario (ahorro tarifario), valor social (continuidad del suministro energético en hogares y negocios ante eventos adversos) y valor ambiental (descarbonización de la matriz local y reducción de emisiones de CO$_2$).
+    
+    \item \textbf{Viabilidad técnica y de formulación para el equipo (Calificación: 4.33/5.00, aporte: 0.43/0.50):} Como estudiantes de Ingeniería Eléctrica de la UTP, el equipo posee las competencias disciplinarias para dimensionar los sistemas fotovoltaicos, modelar la generación solar horaria y evaluar la viabilidad financiera y regulatoria del proyecto durante el semestre.
+    
+    \item \textbf{Información que todavía hace falta investigar durante el semestre:} Para la formulación detallada del proyecto durante el curso, el equipo profundizará en los siguientes cuatro ejes de investigación:
+    \begin{enumerate}[label=\alph*)]
+        \item \textit{Marco regulatorio y normativo:} Análisis de la Resolución CREG 174 de 2021 sobre autogeneración a pequeña escala (AGPE) y procedimientos de conexión y entrega de excedentes ante el operador de red local (Empresa de Energía de Pereira -- EEP).
+        \item \textit{Estructura contractual y financiera:} Diseño del contrato de suscripción/PPA (Power Purchase Agreement) bajo la legislación comercial colombiana y modelación de flujos de caja, amortización y tasa interna de retorno (TIR).
+        \item \textit{Costos y proveedores locales:} Cotizaciones actualizadas de paneles solares, microinversores, inversores híbridos y protecciones eléctricas con distribuidores autorizados en Risaralda y el Eje Cafetero.
+        \item \textit{Perfil solar y curvas de demanda:} Levantamiento de datos de irradiación solar horaria (bases IDEAM/NSRDB) correlacionados con curvas de carga típicas de usuarios residenciales y comerciales en Pereira.
+    \end{enumerate}
+    
+    \item \textbf{Recomendación estratégica:} Proceder con la formulación formal del proyecto centrándose inicialmente en un segmento piloto de hogares campestres y pequeños comercios con consumos superiores a 250 kWh/mes.
+\end{itemize}
+
+% ================================================================
+%            SECCIÓN 4: FUENTES CONSULTADAS (ESTILO APA)
+% ================================================================
+\section{Referencias}
+
+\begin{enumerate}[leftmargin=2.0em, labelindent=0pt]
+    \item ACIS Colombia. (2026). \textit{6 tendencias que marcarán el delivery y la última milla para 2026}. Asociación Colombiana de Ingenieros de Sistemas. \url{https://www.acis.org.co/blog/noticias-2/6-tendencias-que-marcaran-el-delivery-y-la-ultima-milla-para-2026-5452}
+
+    \item Alcaldía de Pereira. (2024). \textit{Plan de Desarrollo Municipal 2024--2027: Pereira Inteligente, Competitiva y Sostenible}. Secretaría de Planeación de Pereira. \url{https://www.pereira.gov.co/documentos/1400/plan-de-desarrollo-2024-2027/}
+
+    \item Alcaldía de Pereira. (2024). \textit{Plan de Gestión Integral de Residuos Sólidos (PGIRS 2024--2027)}. Municipio de Pereira.
+
+    \item Banco Interamericano de Desarrollo. (2026). \textit{Proyecto RG-T4704: Innovación y Ciudades Inteligentes para la Resiliencia Urbana en América Latina}. BID. \url{https://www.iadb.org/es/proyecto/RG-T4704}
+
+    \item Unidad de Planeación Minero Energética. (2026a). \textit{Cobertura de energía eléctrica en Colombia}. Sistema de Información Minero Energético Colombiano (SIMEC). \url{https://www.upme.gov.co/simec/energia-electrica/cobertura/}
+
+    \item Unidad de Planeación Minero Energética. (2026b). \textit{Proyección de Demanda de Energía Eléctrica}. Sistema de Información Minero Energético Colombiano (SIMEC). \url{https://www.upme.gov.co/simec/planeacion-energetica/proyeccion-de-demanda-v2/}
+\end{enumerate}
+
+\end{document}

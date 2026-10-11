@@ -1,0 +1,304 @@
+\documentclass[11pt,letterpaper]{article}
+
+% ==============================================================================
+% PAQUETES Y CONFIGURACIÓN GENERAL
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
+\usepackage[margin=2.5cm,top=2.8cm,bottom=2.8cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\setstretch{1.15}
+
+% ==============================================================================
+% IDENTIDAD VISUAL Y PALETA DE COLORES "SOLAR AS A SERVICE"
+% Concepto: Energía limpia, sol cálido, tecnología verde y sobriedad ejecutiva.
+% Evitamos el azul genérico corporativo.
+% ==============================================================================
+\definecolor{SolarAmber}{HTML}{D97706}      % Ámbar dorado brillante (energía / solar)
+\definecolor{SolarDarkAmber}{HTML}{B45309}  % Ámbar profundo / ocre para contrastes y bordes
+\definecolor{SolarWarmSlate}{HTML}{1E293B}  % Pizarra cálida oscura (títulos y tipografía sobria)
+\definecolor{SolarEarthyTeal}{HTML}{0D9488} % Verde bosque / cerceta (sostenibilidad y ecología)
+\definecolor{SolarLightTeal}{HTML}{CCFBF1}  % Fondo muy suave verde agua
+\definecolor{SolarSandBg}{HTML}{FFFBEB}     % Fondo crema / arena solar muy suave para cajas destacadas
+\definecolor{SolarSoftGray}{HTML}{F8FAFC}   % Fondo alterno sutil para tablas
+\definecolor{SolarBorder}{HTML}{FDE68A}     % Borde dorado claro
+
+% ==============================================================================
+% TIPOGRAFÍA Y ESTILO DE SECCIONES
+% ==============================================================================
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{SolarDarkAmber}}
+  {\thesection.}{0.6em}{}
+  [{\titlerule[0.8pt]}]
+
+\titleformat{\subsection}
+  {\sffamily\large\bfseries\color{SolarWarmSlate}}
+  {\thesubsection.}{0.5em}{}
+
+\titleformat{\subsubsection}
+  {\sffamily\normalsize\bfseries\color{SolarEarthyTeal}}
+  {\thesubsubsection.}{0.4em}{}
+
+% ==============================================================================
+% ENCABEZADOS Y PIES DE PÁGINA
+% ==============================================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small\sffamily\color{SolarDarkAmber}\textbf{SOLAR AS A SERVICE (SaaS)}}
+\fancyhead[R]{\small\sffamily\color{SolarWarmSlate}Estudio de Mercado y Modelo Operativo -- Pereira}
+\fancyfoot[L]{\scriptsize\sffamily\color{gray}Formulación de Proyecto -- Universidad Tecnológica de Pereira (UTP)}
+\fancyfoot[R]{\small\sffamily\bfseries\color{SolarDarkAmber}\thepage}
+
+% ==============================================================================
+% CONFIGURACIÓN DE HYPERREF
+% ==============================================================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=SolarDarkAmber,
+    citecolor=SolarEarthyTeal,
+    urlcolor=SolarEarthyTeal,
+    pdftitle={Estudio de Mercado y Modelo de Operación - Solar as a Service Pereira},
+    pdfauthor={Equipo Formulador UTP}
+}
+
+% ==============================================================================
+% CAJAS DESTACADAS PERSONALIZADAS (tcolorbox)
+% ==============================================================================
+\newtcolorbox{solardestacado}[1][]{
+    enhanced,
+    colback=SolarSandBg,
+    colframe=SolarDarkAmber,
+    coltitle=white,
+    fonttitle=\sffamily\bfseries,
+    boxrule=1pt,
+    arc=4pt,
+    left=8pt,
+    right=8pt,
+    top=8pt,
+    bottom=8pt,
+    #1
+}
+
+\newtcolorbox{solardiferenciador}[1][]{
+    enhanced,
+    colback=SolarLightTeal,
+    colframe=SolarEarthyTeal,
+    coltitle=white,
+    fonttitle=\sffamily\bfseries,
+    boxrule=1pt,
+    arc=4pt,
+    left=8pt,
+    right=8pt,
+    top=8pt,
+    bottom=8pt,
+    #1
+}
+
+% ==============================================================================
+% INICIO DEL DOCUMENTO
+% ==============================================================================
+\begin{document}
+
+% --- PORTADA EJECUTIVA ELEGANTE ---
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    {\Huge\sffamily\bfseries\color{SolarDarkAmber} SOLAR AS A SERVICE (SaaS)}\\[0.4cm]
+    {\Large\sffamily\color{SolarWarmSlate} Democratización de la Energía Solar Fotovoltaica por Suscripción}\\[0.2cm]
+    {\normalsize\sffamily\color{SolarEarthyTeal}\textit{Modelo de Ahorro Garantizado, Cero Inversión Inicial y Flexibilidad de Traslado}}
+    
+    \vspace{1.2cm}
+    
+    \begin{solardestacado}[title=DOCUMENTO DE INGENIERÍA Y FORMULACIÓN COMERCIAL]
+        \centering
+        \textbf{\large ESTUDIO PRELIMINAR DE MERCADO, PROCESOS OPERATIVOS Y ESTRUCTURA FINANCIERA-CONTRACTUAL}\\[0.2cm]
+        \textit{Aplicación focalizada en el Municipio de Pereira y el Eje Cafetero: Pymes, Fincas Agropecuarias y Pequeña Industria}
+    \end{solardestacado}
+    
+    \vspace{1.8cm}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{../assets/solar_service_idea.png}
+    \end{figure}
+    
+    \vfill
+    
+    \begin{tabularx}{\textwidth}{Xr}
+        \textbf{\sffamily Integrantes / Formuladores:} & \textbf{\sffamily Programa Académico:} \\
+        Juan Esteban Nieto Valencia & Ingeniería Eléctrica \\
+        José Daniel Ruíz Gómez & Formulación y Evaluación de Proyectos \\
+        Jose David Toro Naranjo & Universidad Tecnológica de Pereira (UTP) \\
+        & \textbf{Octubre de 2026}
+    \end{tabularx}
+    
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ==============================================================================
+% 1. INTRODUCCIÓN Y CONTEXTO DEL PROYECTO
+% ==============================================================================
+\section{Introducción y Justificación Estratégica}
+
+El modelo tradicional de adopción de energía solar fotovoltaica en Colombia se ha basado históricamente en la venta de activos bajo la modalidad llave en mano (EPC - \textit{Engineering, Procurement, and Construction}). Si bien esta alternativa resulta atractiva para grandes corporaciones con holgura de capital, representa una barrera de entrada infranqueable para las micro, pequeñas y medianas empresas (MIPYMES), pequeños talleres y explotaciones agropecuarias (fincas cafeteras, pecuarias y turísticas) en Pereira. El alto costo de inversión inicial (CAPEX), que oscila típicamente entre \$25 y \$90 millones de pesos colombianos para sistemas comerciales típicos de 5 a 20 kWp, drena la liquidez operativa de las organizaciones.
+
+\begin{solardestacado}[title=Tesis Central del Proyecto: Solar as a Service (SaaS)]
+\textbf{Solar as a Service} transforma radicalmente la propuesta de valor: la empresa diseña, suministra, instala, tramita ante el operador de red, monitorea y asegura la microcentral solar en la cubierta o predio del cliente con \textbf{CAPEX cero (\$0 de inversión inicial)}. El cliente no adquiere equipo físico; suscribe un servicio mensual de disponibilidad y generación de energía verde cuya cuota está estructurada para ser un \textbf{15\,\% a 30\,\% inferior} a lo que pagaría a la Empresa de Energía de Pereira (EEP) por ese mismo bloque de energía.
+\end{solardestacado}
+
+En la fase inicial de lluvia de ideas y ponderación multicriterio del curso, esta propuesta resultó ganadora con una calificación de \textbf{4.45 / 5.00 (93 puntos sobre 105)}, superando ampliamente a las demás iniciativas por su permanencia estructural, capacidad real de pago del mercado meta y aporte a la resiliencia energética de la región.
+
+% ==============================================================================
+% 2. DEFINICIÓN DEL PÚBLICO OBJETIVO EN PEREIRA
+% ==============================================================================
+\section{Definición y Segmentación del Público Objetivo (Pereira)}
+
+El mercado potencial en Pereira se segmenta en tres perfiles primarios con alto consumo diurno y vulnerabilidad ante incrementos tarifarios:
+
+\subsection{Perfil 1: Pequeñas Empresas y Locales Comerciales (Urbano y Semiurbano)}
+\begin{itemize}[leftmargin=1.5em, label={\small\color{SolarDarkAmber}\ding{110}}]
+    \item \textbf{Ubicaciones clave:} Centro de Pereira, Avenida Circunvalar, Corredor de La 30 de Agosto, Cuba, y parques logísticos del corredor hacia Cerritos.
+    \item \textbf{Actividades típicas:} Panaderías industriales, minimercados, carnicerías y frigoríficos, gimnasios, lavanderías, clínicas odontológicas y centros de diagnóstico automotriz (CDA).
+    \item \textbf{Perfil energético:} Consumos mensuales promedio de 700 a 3.500 kWh/mes. Cargas constantes diurnas (refrigeración, climatización, motores). Tarifa no residencial plena de EEP.
+\end{itemize}
+
+\subsection{Perfil 2: Fincas Agropecuarias y Ecoturísticas (Rural y Corredores Campestres)}
+\begin{itemize}[leftmargin=1.5em, label={\small\color{SolarDarkAmber}\ding{110}}]
+    \item \textbf{Ubicaciones clave:} Corregimientos de Combia Alta y Baja, Altagracia, Morelia, La Florida, Tribunas y Cerritos.
+    \item \textbf{Actividades típicas:} Fincas cafeteras con beneficiaderos tecnificados, granjas avícolas/porcícolas con ventilación forzada, plantas de beneficio lechero, hoteles boutique, glampings y condominios campestres con bombeo de agua constante.
+    \item \textbf{Perfil energético:} Consumos estacionales y continuos con tarifas rurales elevadas y alta sensibilidad a la inestabilidad de la red convencional rural.
+\end{itemize}
+
+\subsection{Perfil 3: Pequeñas Fábricas y Talleres Metalmecánicos/Confección}
+\begin{itemize}[leftmargin=1.5em, label={\small\color{SolarDarkAmber}\ding{110}}]
+    \item \textbf{Ubicaciones clave:} Zonas industriales y mixtas de Pereira y límites con Dosquebradas.
+    \item \textbf{Perfil energético:} Maquinaria trifásica, compresores y líneas de costura operando 8 a 12 horas al día en la ventana horaria de mayor radiación solar (8:00 a.m. a 4:30 p.m.).
+\end{itemize}
+
+% ==============================================================================
+% 3. PROPUESTA DE VALOR Y ELEMENTOS DIFERENCIADORES
+% ==============================================================================
+\section{Propuesta de Valor y Factores Diferenciadores Clave}
+
+El mercado solar convencional está saturado de integradores que simplemente venden paneles y desatienden la postventa o exigen que el cliente contraiga una deuda financiera bancaria directa. Nuestra empresa introduce dos diferenciadores disruptivos:
+
+\begin{solardiferenciador}[title=Diferenciador 1: Servicio Dinámico y Cláusula de Migración / Traslado de Activos]
+Uno de los mayores temores de los pequeños empresarios y arrendatarios de locales o bodegas es quedar atados contractualmente a un predio físico. Si deben trasladar su negocio por razones comerciales, una instalación solar tradicional suele considerarse una pérdida total o un activo no recuperable.\\
+
+\textbf{Nuestra Solución:} Implementamos la \textbf{Garantía de Portabilidad Solar}. Si el cliente cambia de sede dentro del área metropolitana o zona de cobertura autorizada, nuestro equipo técnico realiza el desmontaje, transporte, readecuación y reinstalación de la planta solar en la nueva sede bajo una tarifa estándar amortizable o bonificada tras cierto periodo de permanencia contractual.
+\end{solardiferenciador}
+
+\begin{solardiferenciador}[title=Diferenciador 2: Protocolo Inicial de Auditoría Técnica y Levantamiento Estructural Gratuito]
+Antes de formalizar cualquier cobro o firma, la empresa realiza una \textbf{Evaluación Técnica Integral In Situ (Fast Assessment)} que incluye:
+\begin{enumerate}[label=\arabic*)]
+    \item Termografía y estado estructural de cubiertas (para garantizar capacidad portante).
+    \item Levantamiento de sombras y cálculo de radiación específica con software especializado.
+    \item Inspección del tablero de distribución eléctrica y compatibilidad con medidor bidireccional según normativa CREG 174 de 2021 ante EEP.
+    \item Simulación financiera de ahorro real mes a mes basada en el histórico de facturación de los últimos 12 meses.
+\end{enumerate}
+\end{solardiferenciador}
+
+% ==============================================================================
+% 4. CICLO DE VIDA DE PROCESOS (FLUJO OPERATIVO Y SERVICIO)
+% ==============================================================================
+\section{Estructura Operativa y Mapa de Procesos}
+
+Para garantizar un estándar de servicio impecable y la confianza de las entidades financiadoras, los procesos se organizan en cinco fases secuenciales:
+
+\begin{table}[H]
+\centering
+\sffamily
+\small
+\renewcommand{\arraystretch}{1.4}
+\caption{Fases del Proceso Operativo y de Servicio de Solar as a Service}
+\vspace{0.2cm}
+\begin{tabularx}{\textwidth}{p{2.6cm} p{4.6cm} X}
+\toprule
+\textbf{\color{SolarDarkAmber}Fase} & \textbf{\color{SolarWarmSlate}Nombre del Proceso} & \textbf{\color{SolarWarmSlate}Entregables y Acciones Clave} \\
+\midrule
+\rowcolor{SolarSoftGray}
+\textbf{Fase 1: Pre-Venta} & Prospección y Auditoría Técnica In Situ & Análisis de recibo EEP, visita técnica a cubierta, viabilidad eléctrica preliminar y entrega de propuesta de ahorro garantizado. \\
+\textbf{Fase 2: Contratación} & Scoring de Riesgo y Firma Tripartita & Validación de buró crediticio del cliente, estructuración del contrato SaaS (7 a 10 años) y activación de la línea de crédito/leasing verde bancaria. \\
+\rowcolor{SolarSoftGray}
+\textbf{Fase 3: Ejecución} & Legalización, Suministro e Instalación & Trámite de AGPE ante EEP (cambio de medidor bidireccional), montaje mecánico y eléctrico, pruebas RETIE y puesta en marcha. \\
+\textbf{Fase 4: Operación} & Monitoreo en Tiempo Real y Mantenimiento & Plataforma telemática IoT conectada al inversor. Limpieza periódica de módulos, inspección preventiva anual y soporte ante fallas en $<$ 24h. \\
+\rowcolor{SolarSoftGray}
+\textbf{Fase 5: Flexibilidad} & Protocolo de Migración o Opción de Compra & Gestión de traslado a nueva sede en caso de mudanza del negocio, o transferencia del activo al cliente al expirar el contrato. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ==============================================================================
+% 5. ESTRUCTURA CONTRACTUAL Y FINANCIERA (EL TRIÁNGULO DE VALOR)
+% ==============================================================================
+\section{Estructura Contractual y Financiera Tripartita}
+
+Para que el modelo sea robusto, debe existir un equilibrio matemático y jurídico entre tres actores indispensables: el **Banco / Financiador**, la **Empresa Operadora (Nosotros)** y el **Cliente Final**.
+
+\begin{figure}[H]
+\centering
+\begin{solardestacado}[title=El Esquema Financiero Tripartito (PPA / Arrendamiento Operativo)]
+\begin{itemize}[leftmargin=1.5em, label={\small\color{SolarDarkAmber}\ding{110}}]
+    \item \textbf{El Banco (Fondeador del CAPEX):} Otorga crédito verde o leasing a la empresa operadora a una tasa preferencial (con plazos de 5 a 8 años), respaldado por los contratos firmados y la prenda sobre los equipos solares (garantía real prendaria).
+    \item \textbf{La Empresa Operadora (Nosotros):} Asume el riesgo técnico, ejecuta la instalación, mantiene el sistema funcionando al 100\,\% y recauda la suscripción mensual del cliente. Con los flujos, amortiza el servicio de la deuda bancaria, cubre los costos operativos (OPEX) y genera el margen de utilidad neta.
+    \item \textbf{El Cliente Pyme / Finca:} Disfruta de energía limpia y económica sin descapitalizarse ni asumir pasivos financieros directos en su balance (el servicio se contabiliza como gasto operativo deducible).
+\end{itemize}
+\end{solardestacado}
+\end{figure}
+
+\subsection{Definición del Plazo Contractual Óptimo}
+A partir del análisis preliminar de costos de inversión fotovoltaica en Colombia y las tasas de financiamiento verde vigentes, se establecen dos modalidades de plazo:
+\begin{itemize}[leftmargin=1.5em, label={\small\color{SolarEarthyTeal}\ding{110}}]
+    \item \textbf{Contrato Estándar a 7 Años (84 meses):} Ideal para pymes consolidadas. La cuota mensual es competitiva y permite al cliente adquirir el sistema al final del período por un valor residual simbólico (1\,\% a 5\,\% del costo original), disfrutando luego de más de 15 años de energía prácticamente gratuita.
+    \item \textbf{Contrato Flexible a 10 Años (120 meses):} Ofrece la cuota mensual más baja posible (ahorro mensual inmediato de hasta el 25\,\% frente a EEP), con amortización suave y cobertura total de mantenimientos durante toda la década.
+\end{itemize}
+
+% ==============================================================================
+% 6. HOJA DE RUTA PARA EL ESTUDIO DE MERCADO EN PEREIRA
+% ==============================================================================
+\section{Hoja de Ruta Metodológica para el Estudio de Mercado}
+
+Para completar con excelencia las entregas del semestre, se ejecutará el siguiente plan de trabajo de campo e investigación documental:
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{Análisis de Demanda Cuantitativa:} Cruce de datos entre el Directorio Empresarial de la Cámara de Comercio de Pereira (clasificación CIIU de comercios e industrias) y el censo agropecuario de fincas en Cerritos, Combia y Tribunas.
+    \item \textbf{Encuesta y Validación Cualitativa:} Aplicación de 40 a 60 encuestas a administradores de fincas, gerentes de pymes y propietarios de locales comerciales en Pereira para medir:
+    \begin{itemize}
+        \item Gasto promedio mensual en energía eléctrica.
+        \item Frecuencia y costo de interrupciones del servicio.
+        \item Nivel de interés en un modelo por suscripción sin cuota inicial.
+        \item Relevancia de la opción de traslado de equipos (migración).
+    \end{itemize}
+    \item \textbf{Análisis de Competencia y Oferta Sustituta:} Mapeo de instaladores fotovoltaicos locales y oferentes nacionales (Celsia, Erco, Enertéc, empresas locales de Pereira) determinando modelos de cobro y tiempos de respuesta.
+    \item \textbf{Estructuración del Modelo Tarifario vs. Tarifa EEP:} Simulación de la evolución tarifaria del kWh en Pereira proyectando incrementos inflacionarios y comportamiento del Costo Unitario (CU).
+\end{enumerate}
+
+\vspace{0.6cm}
+\begin{center}
+    \sffamily\small\color{SolarDarkAmber}
+    \rule{0.6\textwidth}{0.6pt}\\
+    \vspace{0.15cm}
+    Documento Base de Formulación -- Proyecto Solar as a Service Pereira 2026
+\end{center}
+
+\end{document}
