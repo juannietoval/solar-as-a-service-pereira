@@ -621,20 +621,9 @@
       </p>
     </div>
 
-    <!-- VISOR ISOMÉTRICO DIDÁCTICO INTEGRADO -->
-    <div style="background: #0f172a; border-radius: 20px; overflow: hidden; border: 1px solid #1e293b; box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.4); margin-bottom: 3rem;">
-      <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #1e293b; border-bottom: 1px solid #334155;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
-          <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
-          <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
-          <span style="margin-left: 10px; font-family: monospace; font-size: 0.85rem; color: #94a3b8; font-weight: 600;">SOLAR_LAB_INTERACTIVE_SIMULATOR // MONO-PERC 550Wp</span>
-        </div>
-        <div style="font-family: monospace; font-size: 0.8rem; color: #fbbf24;">
-          INTERACTIVO: PASA EL CURSOR O ARRASTRA
-        </div>
-      </div>
-      <iframe src="panel_anatomy_interactive.html" style="width: 100%; height: 680px; border: none; display: block; background: #0b0b0b;" title="Simulador Interactivo de Panel Solar"></iframe>
+    <!-- VISOR ISOMÉTRICO DIDÁCTICO INTEGRADO PERFECTAMENTE EN EL FONDO -->
+    <div style="background: transparent; margin-bottom: 3.5rem;">
+      <iframe id="anatomyIframe" src="panel_anatomy_interactive.html" style="width: 100%; height: 830px; border: none; display: block; background: transparent; overflow: hidden;" scrolling="no" title="Simulador Interactivo de Panel Solar - Anatomy Engine"></iframe>
     </div>
 
     <!-- DESGLOSE DIDÁCTICO DE CADA COMPONENTE DE LA ANATOMÍA -->
@@ -827,6 +816,20 @@
 
     // Inicializar cálculo al cargar
     calcularAhorro();
+
+    // Sincronización del scroll de la página con el despiece 3D de Anatomy
+    const anatomyIframe = document.getElementById('anatomyIframe');
+    function syncAnatomyScroll() {
+      if (!anatomyIframe || !anatomyIframe.contentWindow) return;
+      const rect = anatomyIframe.getBoundingClientRect();
+      const winH = window.innerHeight;
+      // El despiece progresa gradualmente cuando la sección de tecnología entra en pantalla
+      const progress = Math.max(0, Math.min(1, (winH * 0.85 - rect.top) / (winH * 0.65)));
+      anatomyIframe.contentWindow.postMessage({ explodeTarget: progress }, '*');
+    }
+
+    window.addEventListener('scroll', syncAnatomyScroll, { passive: true });
+    window.addEventListener('resize', syncAnatomyScroll, { passive: true });
   </script>
 </body>
 </html>
