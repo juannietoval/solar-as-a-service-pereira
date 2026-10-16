@@ -1,0 +1,110 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[margin=2.0cm,top=1.8cm,bottom=1.8cm]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+% Paleta limpia
+\definecolor{navy}{RGB}{20, 45, 80}
+\definecolor{subgray}{RGB}{100, 110, 120}
+
+\titleformat{\section}{\large\bfseries\color{navy}}{}{0em}{}
+\titlespacing*{\section}{0pt}{12pt}{4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+\begin{document}
+
+% =============================================================================
+% PÁGINA 1: MERCADO, MUESTRA Y TÉCNICA
+% =============================================================================
+{\LARGE \textbf{\color{navy}Apuntes de Sustentación: Cifras y Datos Clave}}\\[2pt]
+{\small\color{subgray} Proyecto Solar as a Service (SaaS) Pereira \quad|\quad Ingeniería Eléctrica UTP}
+
+\vspace{0.3cm}
+
+\section*{1. El Embudo de Mercado (De lo Grande a lo Concreto)}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+    \item \textbf{50.000 empresas:} Universo productivo de todo Risaralda.
+    \item \textbf{25.000 establecimientos ($N$):} Base de datos activa de Pereira (Cámara de Comercio).
+    \item \textbf{3.200 comercios viables (SAM):} Negocios con techos aptos y consumo diurno (panaderías, carnicerías, minimercados).
+    \item \textbf{20 clientes iniciales (SOM):} Portafolio piloto con el que arranca el negocio (total: 308 kWp).
+\end{itemize}
+
+\section*{2. Tamaño de la Muestra para Encuestas}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+    \item \textbf{Muestra calculada:} \textbf{379 establecimientos}.
+    \item \textbf{Parámetros formales:} 95\% de confianza ($Z = 1,96$), 5\% de margen de error ($e = 0,05$) y $p = q = 0,5$.
+    \item \textbf{Por qué 379:} La fórmula da 378,36 y por regla estadística (Levin \& Rubin) se redondea hacia arriba al entero siguiente.
+\end{itemize}
+
+\section*{3. Datos Técnicos y Radiación en Pereira}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+    \item \textbf{Radiación en Pereira:} \textbf{4,88 kWh/m²/día} (1.783 kWh/m²/año, según Banco Mundial / Global Solar Atlas).
+    \item \textbf{Sistema típico comercial:} \textbf{15,4 kWp DC} (28 paneles de 550 Wp + inversor trifásico de 15 kW).
+    \item \textbf{Generación mensual:} \textbf{1.870 kWh/mes}.
+    \item \textbf{Uso de la energía bajo CREG 174:}
+    \begin{itemize}[leftmargin=1.3em, itemsep=2pt]
+        \item \textbf{80\% autoconsumo directo:} Las neveras y motores consumen la energía solar al instante en el día.
+        \item \textbf{20\% inyección a la red:} El sobrante del mediodía entra a EEP como Excedente Tipo 1 (se compensa 1 a 1 para la noche).
+    \end{itemize}
+\end{itemize}
+
+\clearpage
+
+% =============================================================================
+% PÁGINA 2: FACTURA, FINANZAS Y RESPUESTAS RÁPIDAS
+% =============================================================================
+{\LARGE \textbf{\color{navy}Apuntes de Sustentación (Continuación)}}\\[2pt]
+{\small\color{subgray} Facturación, Finanzas del Portafolio y Respuestas ante Preguntas}
+
+\vspace{0.3cm}
+
+\section*{4. La Factura del Cliente: El Antes y el Después}
+\textit{\small Caso para un negocio comercial típico con consumo de 2.200 kWh al mes:}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+    \item \textbf{Tarifa comercial EEP:} \textbf{\$980 pesos por kWh} (incluye 20\% de sobretasa de ley).
+    \item \textbf{Gasto mensual SIN paneles (antes):} \textbf{\$2.286.000 pesos/mes} (pagados 100\% a EEP).
+    \item \textbf{Gasto mensual CON el servicio (después):}
+    \begin{itemize}[leftmargin=1.3em, itemsep=2pt]
+        \item Cuota fija a nuestra empresa: \textbf{\$1.250.000 pesos/mes}.
+        \item Factura remanente a EEP: \textbf{\$454.000 pesos/mes} (cargos fijos y remanente nocturno).
+        \item \textbf{Gasto total nuevo:} \textbf{\$1.704.000 pesos/mes}.
+    \end{itemize}
+    \item \textbf{Ahorro neto mensual:} \textbf{\$582.000 pesos/mes} en el bolsillo del comerciante.
+    \item \textbf{Porcentaje de ahorro:} \textbf{25,5\% de ahorro real} desde el primer mes.
+    \item \textbf{Barrera eliminada:} \textbf{\$0 pesos de cuota inicial} (no gasta sus ahorros ni se endeuda).
+\end{itemize}
+
+\section*{5. Finanzas del Portafolio (20 Clientes / Inversión de \$1.022M)}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+    \item \textbf{Inversión total inicial (CAPEX):} \textbf{\$1.022 millones de pesos} (\$51,1M por cada sistema).
+    \item \textbf{Financiamiento:}
+    \begin{itemize}[leftmargin=1.3em, itemsep=2pt]
+        \item \textbf{70\% Deuda:} \$716 millones con crédito verde Findeter a 7 años (14,2\% E.A.).
+        \item \textbf{30\% Capital propio (Equity):} \$307 millones aportados por la empresa.
+    \end{itemize}
+    \item \textbf{Servicio de deuda anual:} \$158 millones de pesos al año (\$13,2M al mes por todo el portafolio).
+    \item \textbf{Punto de equilibrio (Payback):} \textbf{2,66 años} (\textbf{32 meses} / 2 años y 8 meses).
+    \item \textbf{Rentabilidad (TIR):} \textbf{39,3\%} \quad|\quad \textbf{VPN:} \textbf{+\$380 millones de pesos}.
+    \item \textbf{Cobertura bancaria (DSCR Año 1):} \textbf{1,53x} (supera el mínimo bancario exigido de 1,25x).
+    \item \textbf{Gancho comercial de cierre:} En el \textbf{Año 8 (mes 96)}, cuando el crédito está pago, los paneles se le transfieren al cliente. Tienen vida útil de 25-30 años, dejándole más de 17 años de energía a costo cero.
+\end{itemize}
+
+\section*{6. Respuestas Rápidas para el Jurado}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=4pt]
+    \item \textbf{¿Por qué no usar baterías?} Porque encarecen el proyecto en un 73\% y duran solo 7 años. La red de EEP actúa como batería virtual gratuita gracias a la Resolución CREG 174.
+    \item \textbf{¿Qué pasa si el cliente no paga?} Se exige codeudor con finca raíz, registro en el RUG (Ley 1676) y corte remoto con el módem 4G del inversor.
+    \item \textbf{¿Y si está en un local arrendado?} Se firma un acuerdo tripartito con el dueño del inmueble que renuncia a retener los paneles y autoriza el retiro en 48 horas en caso de cierre.
+\end{itemize}
+
+\end{document}

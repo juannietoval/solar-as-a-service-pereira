@@ -3,26 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solar as a Service (SaaS) | Pereira & Eje Cafetero</title>
+  <title>Solar as a Service | Pereira</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --solar-amber: #d97706;
-      --solar-amber-dark: #b45309;
-      --solar-amber-light: #fef3c7;
-      --solar-slate: #0f172a;
-      --solar-slate-muted: #475569;
-      --solar-teal: #0d9488;
-      --solar-teal-light: #ccfbf1;
-      --solar-sand: #fffbeb;
-      --solar-card-bg: #ffffff;
-      --solar-border: #f1f5f9;
-      --solar-border-amber: #fde68a;
+      --primary: #0f172a;
+      --accent: #d97706;
+      --accent-hover: #b45309;
+      --accent-soft: #fef3c7;
+      --success: #15803d;
+      --success-soft: #dcfce7;
+      --muted: #64748b;
+      --card-bg: #ffffff;
+      --bg: #f8fafc;
+      --border: #e2e8f0;
       --radius: 16px;
-      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
-      --shadow-hover: 0 20px 30px -10px rgba(217, 119, 6, 0.15);
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
     }
 
     * {
@@ -33,803 +31,608 @@
     }
 
     body {
-      background-color: #fafaf9;
-      color: var(--solar-slate);
+      background-color: var(--bg);
+      color: var(--primary);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    /* NAV */
+    /* BARRA DE NAVEGACIÓN SENCILLA */
     nav {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--solar-border);
-      z-index: 100;
-      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 50;
+      padding: 1rem 1.5rem;
     }
 
-    .nav-container {
-      max-width: 1200px;
+    .nav-inner {
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .brand {
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--primary);
+      text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: var(--solar-slate);
-      text-decoration: none;
+      gap: 8px;
     }
 
-    .brand-badge {
-      background: linear-gradient(135deg, var(--solar-amber), var(--solar-amber-dark));
+    .logo-badge {
+      background: var(--accent);
       color: white;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       align-items: center;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: var(--solar-slate-muted);
+      color: var(--muted);
       font-weight: 600;
       font-size: 0.95rem;
       transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: var(--solar-amber-dark);
+      color: var(--accent);
     }
 
-    .btn-nav {
-      background: var(--solar-amber);
+    .btn-action {
+      background: var(--accent);
       color: white !important;
-      padding: 0.6rem 1.4rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 999px;
       font-weight: 700 !important;
-      transition: transform 0.2s, background 0.2s !important;
+      transition: background 0.2s;
     }
 
-    .btn-nav:hover {
-      background: var(--solar-amber-dark) !important;
-      transform: translateY(-1px);
+    .btn-action:hover {
+      background: var(--accent-hover) !important;
     }
 
-    /* HERO */
+    /* SECCIÓN PRINCIPAL (HERO) */
     .hero {
-      padding: 4.5rem 2rem 3rem;
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
+      padding: 4.5rem 1.5rem 3rem;
       text-align: center;
     }
 
-    .pill-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--solar-sand);
-      border: 1px solid var(--solar-border-amber);
-      color: var(--solar-amber-dark);
-      padding: 6px 16px;
+    .tag-city {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-hover);
+      padding: 6px 14px;
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .hero h1 {
-      font-size: 3.25rem;
+      font-size: 2.8rem;
       font-weight: 800;
-      line-height: 1.15;
-      color: var(--solar-slate);
-      margin-bottom: 1.5rem;
-      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
     }
 
-    .hero h1 span.highlight {
-      background: linear-gradient(135deg, var(--solar-amber), var(--solar-amber-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero h1 span {
+      color: var(--accent);
     }
 
     .hero p {
-      font-size: 1.25rem;
-      color: var(--solar-slate-muted);
-      max-width: 750px;
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 720px;
       margin: 0 auto 2.5rem;
     }
 
-    .hero-actions {
-      display: flex;
-      justify-content: center;
+    /* 4 DATOS CLAVE */
+    .key-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
-      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--solar-amber), var(--solar-amber-dark));
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1.05rem;
-      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
-      transition: all 0.2s;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
-    }
-
-    .btn-secondary {
+    .stat-card {
       background: white;
-      color: var(--solar-slate);
-      border: 1px solid #e2e8f0;
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1.05rem;
-      transition: all 0.2s;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-align: center;
     }
 
-    .btn-secondary:hover {
-      background: #f8fafc;
-      border-color: #cbd5e1;
+    .stat-card .val {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
     }
 
-    /* METRIC STRIP */
-    .metric-strip {
+    .stat-card .label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* CÓMO FUNCIONA */
+    .section-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+    }
+
+    .sec-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .sec-title h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .sec-title p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
-      max-width: 1200px;
-      margin: 3.5rem auto 1rem;
-      padding: 0 2rem;
     }
 
-    .metric-card {
+    .step-box {
       background: white;
-      border: 1px solid var(--solar-border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 1.75rem;
-      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      text-align: center;
     }
 
-    .metric-number {
-      font-size: 2.2rem;
+    .step-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent-hover);
       font-weight: 800;
-      color: var(--solar-amber-dark);
-      margin-bottom: 0.25rem;
-    }
-
-    .metric-label {
-      font-size: 0.9rem;
-      color: var(--solar-slate-muted);
-      font-weight: 600;
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-subtitle {
-      color: var(--solar-teal);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: var(--solar-slate);
-    }
-
-    /* DIFFERENTIATORS */
-    .diff-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .diff-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 2.25rem;
-      border: 1px solid var(--solar-border);
-      box-shadow: var(--shadow);
-      position: relative;
-      transition: all 0.25s;
-    }
-
-    .diff-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--solar-border-amber);
-    }
-
-    .diff-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: var(--solar-sand);
-      color: var(--solar-amber-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .diff-icon.teal {
-      background: var(--solar-teal-light);
-      color: var(--solar-teal);
-    }
-
-    .diff-card h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--solar-slate);
-    }
-
-    .diff-card p {
-      color: var(--solar-slate-muted);
-      font-size: 0.95rem;
-    }
-
-    /* CALCULATOR */
-    .calc-box {
-      background: white;
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--solar-border);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    @media (max-width: 850px) {
-      .calc-box {
-        grid-template-columns: 1fr;
-        padding: 2rem;
-      }
-    }
-
-    .calc-inputs h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
       margin-bottom: 1rem;
     }
 
-    .range-group {
-      margin-bottom: 1.75rem;
+    .step-box h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    .range-header {
+    .step-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* COMPARADOR SENCILLO (ANTES VS DESPUÉS) */
+    .compare-container {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .compare-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    .compare-side {
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .side-before {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+    }
+
+    .side-after {
+      background: var(--success-soft);
+      border: 1px solid #86efac;
+    }
+
+    .compare-side h4 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .side-before h4 { color: #475569; }
+    .side-after h4 { color: var(--success); }
+
+    .compare-amount {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .side-before .compare-amount { color: #334155; }
+    .side-after .compare-amount { color: var(--success); }
+
+    .compare-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .compare-list li {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* CALCULADORA SENCILLA */
+    .calculator {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .calculator {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+    }
+
+    .calc-slider label {
       display: flex;
       justify-content: space-between;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
     }
 
-    .range-val {
-      color: var(--solar-amber-dark);
-      font-weight: 800;
+    .calc-slider span.val {
+      color: var(--accent);
+      font-size: 1.2rem;
     }
 
     input[type=range] {
       width: 100%;
       height: 8px;
       background: #e2e8f0;
-      border-radius: 5px;
+      border-radius: 4px;
       outline: none;
-      accent-color: var(--solar-amber);
-    }
-
-    .select-group {
+      accent-color: var(--accent);
       margin-bottom: 1.5rem;
     }
 
-    .select-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    select {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border-radius: 10px;
-      border: 1px solid #cbd5e1;
-      font-size: 1rem;
-      background: #f8fafc;
-      color: var(--solar-slate);
-      font-weight: 600;
-      outline: none;
-    }
-
-    .calc-results {
-      background: linear-gradient(145deg, #1e293b, #0f172a);
+    .calc-result-card {
+      background: var(--primary);
       color: white;
-      padding: 2.5rem;
+      padding: 2rem;
       border-radius: 16px;
       text-align: center;
     }
 
-    .calc-results h4 {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #94a3b8;
-      margin-bottom: 0.5rem;
-    }
-
-    .savings-big {
-      font-size: 3rem;
+    .calc-result-card .savings-val {
+      font-size: 2.8rem;
       font-weight: 800;
       color: #fbbf24;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
+      margin: 0.5rem 0;
     }
 
-    .results-breakdown {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    .calc-meta {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 1.2rem;
+      margin-top: 1.2rem;
       text-align: left;
     }
 
-    .breakdown-item span {
+    .calc-meta div span {
       display: block;
       font-size: 0.8rem;
       color: #94a3b8;
     }
 
-    .breakdown-item strong {
-      font-size: 1.15rem;
-      color: white;
-    }
-
-    /* PROCESS TIMELINE */
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      position: relative;
-    }
-
-    .step-card {
-      background: white;
-      border: 1px solid var(--solar-border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      text-align: center;
-      position: relative;
-      box-shadow: var(--shadow);
-    }
-
-    .step-number {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--solar-amber);
-      color: white;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-
-    .step-card h4 {
+    .calc-meta div strong {
       font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      color: white;
     }
 
-    .step-card p {
-      font-size: 0.85rem;
-      color: var(--solar-slate-muted);
+    /* PREGUNTAS FRECUENTES (FAQ) */
+    .faq-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .faq-item h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+    }
+
+    .faq-item p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
     }
 
     /* FOOTER */
     footer {
-      background: var(--solar-slate);
-      color: white;
-      padding: 4rem 2rem 2rem;
-      border-top: 1px solid #1e293b;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-col h4 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: #fbbf24;
-    }
-
-    .footer-col p, .footer-col a {
+      background: var(--primary);
       color: #94a3b8;
-      font-size: 0.9rem;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-col a:hover {
-      color: white;
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-top: 2rem;
-      border-top: 1px solid #1e293b;
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
-      font-size: 0.85rem;
-      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #fbbf24;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- BARRA DE NAVEGACIÓN -->
   <nav>
-    <div class="nav-container">
-      <a href="#" class="brand">
-        <span class="brand-badge">SaaS</span>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-badge">SaaS</span>
         <span>Solar as a Service</span>
       </a>
       <div class="nav-links">
-        <a href="#diferenciadores">Diferenciadores</a>
-        <a href="#tecnologia">Tecnología & Hardware</a>
+        <a href="#como-funciona">Cómo Funciona</a>
+        <a href="#ahorro">Cuánto Ahorras</a>
         <a href="#calculadora">Calculadora</a>
-        <a href="#proceso">Cómo Funciona</a>
-        <a href="#contacto" class="btn-nav">Solicitar Revisión $0</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#calculadora" class="btn-action">Ver mi Ahorro</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- SECCIÓN PRINCIPAL (HERO) -->
   <header class="hero">
-    <div class="pill-tag">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-      Energía Solar Distribuida · Pereira & Eje Cafetero
-    </div>
-    <h1>Energía Solar por Suscripción.<br><span class="highlight">Sin Inversión Inicial. Sin Ataduras.</span></h1>
-    <p>Diseñamos, instalamos y operamos microcentrales solares para pymes, fincas y locales comerciales. Ahorra desde el primer mes pagando una cuota fija menor a tu factura de luz actual.</p>
-    
-    <div class="hero-actions">
-      <a href="#calculadora" class="btn-primary">Calcular mi Ahorro</a>
-      <a href="#diferenciadores" class="btn-secondary">Conocer la Portabilidad Solar</a>
-    </div>
-
-    <!-- METRICS -->
-    <div class="metric-strip">
-      <div class="metric-card">
-        <div class="metric-number">$0</div>
-        <div class="metric-label">Inversión Inicial (CAPEX Cero)</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-number">15% - 30%</div>
-        <div class="metric-label">Ahorro Neto Mensual vs. EEP</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-number">100%</div>
-        <div class="metric-label">Portabilidad en Caso de Mudanza</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-number">24/7</div>
-        <div class="metric-label">Monitoreo IoT & Mantenimiento</div>
-      </div>
-    </div>
+    <div class="tag-city">Pereira y Eje Cafetero</div>
+    <h1>Energía Solar para tu Negocio.<br><span>Sin Pagar Cuota Inicial.</span></h1>
+    <p>Instalamos paneles solares en tu techo sin que tengas que gastar tus ahorros. Pagas una mensualidad fija y ahorras desde el primer mes en tu factura de luz.</p>
   </header>
 
-  <!-- DIFFERENTIATORS -->
-  <section id="diferenciadores">
-    <div class="section-header">
-      <div class="section-subtitle">¿Por qué somos diferentes?</div>
-      <h2 class="section-title">El Modelo Solar más Dinámico y Flexible de Risaralda</h2>
+  <!-- 4 DATOS CLAVE DEL PROYECTO -->
+  <div class="key-stats">
+    <div class="stat-card">
+      <div class="val">$0 COP</div>
+      <div class="label">Inversión Inicial</div>
+    </div>
+    <div class="stat-card">
+      <div class="val">25,5%</div>
+      <div class="label">Ahorro Real Mensual</div>
+    </div>
+    <div class="stat-card">
+      <div class="val">Fija</div>
+      <div class="label">Cuota Mensual Predecible</div>
+    </div>
+    <div class="stat-card">
+      <div class="val">Año 8</div>
+      <div class="label">Los Paneles Pasan a Ser Tuyos</div>
+    </div>
+  </div>
+
+  <!-- CÓMO FUNCIONA -->
+  <section id="como-funciona" class="section-wrap">
+    <div class="sec-title">
+      <h2>Así de Simple Funciona</h2>
+      <p>Nos encargamos de todo para que tú solo veas bajar el valor de tu factura.</p>
     </div>
 
-    <div class="diff-grid">
-      <div class="diff-card">
-        <div class="diff-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18.5" r="2.5"/><circle cx="7" cy="18.5" r="2.5"/></svg>
-        </div>
-        <h3>Garantía de Portabilidad Solar</h3>
-        <p>¿Estás en un local o bodega arrendada? Si trasladas tu negocio dentro del área metropolitana de Pereira, nuestro equipo técnico desmonta, transporta y reinstala la planta fotovoltaica en tu nueva sede. No quedas atado a un predio.</p>
+    <div class="steps-grid">
+      <div class="step-box">
+        <div class="step-badge">1</div>
+        <h3>Revisamos tu Factura</h3>
+        <p>Miramos tu recibo de la Empresa de Energía de Pereira (EEP) y verificamos el estado de tu tejado sin costo.</p>
       </div>
 
-      <div class="diff-card">
-        <div class="diff-icon teal">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        </div>
-        <h3>Auditoría In Situ Gratuita ($0)</h3>
-        <p>Antes de cualquier firma, realizamos una visita de inspección técnica: termografía de cubierta, resistencia estructural, estudio de sombras y adecuación del tablero para el medidor bidireccional de la Empresa de Energía de Pereira (EEP).</p>
+      <div class="step-box">
+        <div class="step-badge">2</div>
+        <h3>Instalamos sin Cobrarte</h3>
+        <p>Colocamos los 28 paneles solares y el equipo con $0 pesos de entrada. No tocas tu dinero de trabajo.</p>
       </div>
 
-      <div class="diff-card">
-        <div class="diff-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 0 0 1.4 0l4.3-4.3a1 1 0 0 0 0-1.4l-2-2"/><path d="m14 14 3-3"/><path d="M18 10V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7"/></svg>
-        </div>
-        <h3>Financiación Bancaria Respaldada</h3>
-        <p>Trabajamos con líneas de crédito verde (7 a 10 años). Los paneles y la estructura son el propio respaldo del activo. No tocas tu línea de crédito comercial ni comprometes tu capital de trabajo diario.</p>
+      <div class="step-box">
+        <div class="step-badge">3</div>
+        <h3>Empiezas a Ahorrar</h3>
+        <p>Tus neveras y máquinas consumen la luz del sol en el día. Lo que sobra se devuelve a la red para la noche.</p>
       </div>
 
-      <div class="diff-card">
-        <div class="diff-icon teal">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <h3>Resolución CREG 174 & Excedentes</h3>
-        <p>Tramitamos la legalización como Autogenerador a Pequeña Escala (AGPE). La energía sobrante que inyectas a la red se convierte en créditos a favor en tu facturación mensual.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TECNOLOGIA & ANATOMIA DE COMPONENTES -->
-  <section id="tecnologia" style="max-width: 1200px; margin: 4rem auto; padding: 0 1.5rem;">
-    <div class="section-header" style="margin-bottom: 2.5rem;">
-      <div class="section-subtitle">Ingeniería & Madurez Tecnológica</div>
-      <h2 class="section-title">Anatomía Interactiva del Módulo Fotovoltaico</h2>
-      <p style="color: var(--solar-slate-muted); max-width: 780px; margin: 1rem auto 0; font-size: 1.05rem;">
-        Banco de pruebas isométrico con precisión milimétrica (motor <em>Anatomy</em>). Permite explorar de forma didáctica la arquitectura física multicapa, la generación de fotocorriente en corriente continua (DC) y la respuesta del módulo monocristalino bajo la radiación solar de Pereira.
-      </p>
-    </div>
-
-    <!-- VISOR ISOMÉTRICO DIDÁCTICO INTEGRADO PERFECTAMENTE EN EL FONDO -->
-    <div style="background: transparent; margin-bottom: 3.5rem;">
-      <iframe id="anatomyIframe" src="panel_anatomy_interactive.html" style="width: 100%; height: 830px; border: none; display: block; background: transparent; overflow: hidden;" scrolling="no" title="Simulador Interactivo de Panel Solar - Anatomy Engine"></iframe>
-    </div>
-
-    <!-- DESGLOSE DIDÁCTICO DE CADA COMPONENTE DE LA ANATOMÍA -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
-      <div style="background: white; border: 1px solid var(--solar-border); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow);">
-        <div style="font-family: monospace; font-size: 0.8rem; color: var(--solar-amber-dark); font-weight: 800; margin-bottom: 0.5rem;">01 / CAPA SUPERIOR</div>
-        <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--solar-slate); margin-bottom: 0.5rem;">Vidrio Solar Antirreflejo</h4>
-        <p style="color: var(--solar-slate-muted); font-size: 0.9rem;">Cristal templado de 3.2 mm de alta transmisividad (&gt;94%). Protege las celdas frente al impacto del granizo y cargas mecánicas de viento de hasta 2400 Pa.</p>
-      </div>
-
-      <div style="background: white; border: 1px solid var(--solar-border); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow);">
-        <div style="font-family: monospace; font-size: 0.8rem; color: var(--solar-teal); font-weight: 800; margin-bottom: 0.5rem;">02 / ENCAPSULANTE</div>
-        <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--solar-slate); margin-bottom: 0.5rem;">Láminas Térmicas EVA</h4>
-        <p style="color: var(--solar-slate-muted); font-size: 0.9rem;">Doble capa de Etil-Vinil-Acetato que sella al vacío las celdas, previniendo la penetración de humedad relativa y amortiguando los choques térmicos diurnos.</p>
-      </div>
-
-      <div style="background: white; border: 1px solid var(--solar-border); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow);">
-        <div style="font-family: monospace; font-size: 0.8rem; color: #3b82f6; font-weight: 800; margin-bottom: 0.5rem;">03 / NÚCLEO ACTIVO</div>
-        <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--solar-slate); margin-bottom: 0.5rem;">Células de Silicio & MBB</h4>
-        <p style="color: var(--solar-slate-muted); font-size: 0.9rem;">Obleas de silicio monocristalino tipo P/N con tecnología Multi-Busbar (MBB). Convierten la radiación fotónica en corriente continua (DC) minimizando la resistencia interna.</p>
-      </div>
-
-      <div style="background: white; border: 1px solid var(--solar-border); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow);">
-        <div style="font-family: monospace; font-size: 0.8rem; color: var(--solar-slate-muted); font-weight: 800; margin-bottom: 0.5rem;">04 / AISLAMIENTO & MARCO</div>
-        <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--solar-slate); margin-bottom: 0.5rem;">Backsheet & Aluminio</h4>
-        <p style="color: var(--solar-slate-muted); font-size: 0.9rem;">Lámina posterior de polímero aislante dieléctrico de alta rigidez y marco de aluminio anodizado con ranuras para drenaje de agua y fijación rápida a rieles.</p>
+      <div class="step-box">
+        <div class="step-badge">4</div>
+        <h3>El Sistema es Tuyo</h3>
+        <p>En el año 8 terminamos de pagar el crédito y los paneles quedan a tu nombre. Tienen más de 17 años de vida útil extra.</p>
       </div>
     </div>
   </section>
 
-  <!-- CALCULATOR -->
-  <section id="calculadora">
-    <div class="section-header">
-      <div class="section-subtitle">Simulador Financiero</div>
-      <h2 class="section-title">Calcula tu Ahorro Estimado con Solar as a Service</h2>
+  <!-- EL ANTES Y DESPUÉS (EJEMPLO REAL DE UN COMERCIO) -->
+  <section id="ahorro" class="section-wrap">
+    <div class="sec-title">
+      <h2>El Ahorro en tu Bolsillo</h2>
+      <p>Ejemplo real para un negocio que consume 2.200 kWh al mes (panadería, carnicería o minimercado):</p>
     </div>
 
-    <div class="calc-box">
-      <div class="calc-inputs">
-        <h3>Datos de tu Negocio o Finca</h3>
+    <div class="compare-container">
+      <div class="compare-side side-before">
+        <h4>Antes (Sin Paneles)</h4>
+        <div class="compare-amount">$ 2.286.000</div>
+        <p style="color: #64748b; font-size: 0.9rem;">Pagados cada mes a la Empresa de Energía de Pereira.</p>
+        <ul class="compare-list">
+          <li>❌ Tarifa comercial cara ($980 por kWh)</li>
+          <li>❌ Expuesto a subidas continuas de la luz</li>
+          <li>❌ Todo el dinero se va sin retorno</li>
+        </ul>
+      </div>
+
+      <div class="compare-side side-after">
+        <h4>Con Solar as a Service</h4>
+        <div class="compare-amount">$ 1.704.000</div>
+        <p style="color: #166534; font-weight: 700; font-size: 0.95rem;">¡Ahorras $ 582.000 COP cada mes!</p>
+        <ul class="compare-list">
+          <li>✅ Cuota fija a nosotros: $1.250.000 COP</li>
+          <li>✅ Recibo mínimo a EEP: $454.000 COP</li>
+          <li>✅ <strong>25,5% de ahorro garantizado en el día a día</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA RÁPIDA -->
+  <section id="calculadora" class="section-wrap">
+    <div class="sec-title">
+      <h2>Calcula tu Ahorro Estimado</h2>
+      <p>Mueve la barra según el valor aproximado de tu factura de luz actual:</p>
+    </div>
+
+    <div class="calculator">
+      <div class="calc-slider">
+        <label>
+          <span>Factura Actual de Luz (EEP):</span>
+          <span class="val" id="lblFactura">$ 2.200.000 COP</span>
+        </label>
+        <input type="range" id="rngFactura" min="1000000" max="6000000" step="100000" value="2200000" oninput="actualizarCalculo()">
         
-        <div class="select-group">
-          <label for="tipoCliente">Tipo de Establecimiento:</label>
-          <select id="tipoCliente" onchange="calcularAhorro()">
-            <option value="comercial">Comercio / Local Urbano (Centro / Circunvalar / Cuba)</option>
-            <option value="finca">Finca Cafetera / Agropecuaria / Glamping (Cerritos / Combia)</option>
-            <option value="industrial">Pequeña Fábrica / Taller Metalmecánico / Confección</option>
-          </select>
-        </div>
-
-        <div class="range-group">
-          <div class="range-header">
-            <span>Factura Eléctrica Actual Mensual:</span>
-            <span class="range-val" id="facturaLabel">$ 1,800,000 COP</span>
-          </div>
-          <input type="range" id="facturaInput" min="600000" max="8000000" step="100000" value="1800000" oninput="calcularAhorro()">
-        </div>
-
-        <div class="range-group">
-          <div class="range-header">
-            <span>Plazo del Contrato Seleccionado:</span>
-            <span class="range-val" id="plazoLabel">7 Años (84 meses)</span>
-          </div>
-          <input type="range" id="plazoInput" min="7" max="10" step="3" value="7" oninput="calcularAhorro()">
-        </div>
+        <p style="font-size: 0.9rem; color: var(--muted); margin-top: 1rem;">
+          Calculado con base en la tarifa comercial de Pereira ($980/kWh) y un sistema solar diseñado a tu medida.
+        </p>
       </div>
 
-      <div class="calc-results">
-        <h4>Tu Ahorro Neto Mensual Estimado</h4>
-        <div class="savings-big" id="ahorroMensual">$ 396,000 COP</div>
-        <p style="color: #cbd5e1; font-size: 0.95rem;">Desde el mes 1, sin poner un solo peso de inversión inicial.</p>
+      <div class="calc-result-card">
+        <span style="font-size: 0.9rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px;">Te ahorras aproximadamente</span>
+        <div class="savings-val" id="lblAhorro">$ 561.000 COP</div>
+        <span style="font-size: 0.9rem; color: #cbd5e1;">todos los meses (25,5% de descuento)</span>
 
-        <div class="results-breakdown">
-          <div class="breakdown-item">
-            <span>Cuota Mensual SaaS:</span>
-            <strong id="cuotaSaaS">$ 1,404,000 COP</strong>
+        <div class="calc-meta">
+          <div>
+            <span>Nueva cuota fija:</span>
+            <strong id="lblCuota">$ 1.200.000</strong>
           </div>
-          <div class="breakdown-item">
-            <span>Ahorro Proyectado a 7 Años:</span>
-            <strong id="ahorroTotal">$ 33,264,000 COP</strong>
+          <div>
+            <span>Ahorro en 8 años:</span>
+            <strong id="lblAhorroTotal">$ 53,8 Millones</strong>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section id="proceso">
-    <div class="section-header">
-      <div class="section-subtitle">Paso a Paso</div>
-      <h2 class="section-title">El Proceso de Implementación</h2>
+  <!-- PREGUNTAS FRECUENTES SENCILLAS -->
+  <section id="preguntas" class="section-wrap">
+    <div class="sec-title">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Respuestas claras y sin tecnicismos.</p>
     </div>
 
-    <div class="timeline">
-      <div class="step-card">
-        <div class="step-number">1</div>
-        <h4>Visita Técnica $0</h4>
-        <p>Inspección in situ de cubiertas, cálculo solar y revisión de la factura eléctrica actual.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>¿Tengo que pagar algo al principio?</h4>
+        <p>No. La instalación, los paneles, el montaje y los permisos tienen un costo inicial de $0 COP para ti. Empiezas a pagar solo cuando el sistema ya esté prendido y ahorrando energía.</p>
       </div>
 
-      <div class="step-card">
-        <div class="step-number">2</div>
-        <h4>Propuesta & Acuerdo</h4>
-        <p>Estructuración de la cuota mensual a 7 o 10 años con ahorro garantizado y cláusula de migración.</p>
+      <div class="faq-item">
+        <h4>¿Qué pasa de noche o cuando llueve?</h4>
+        <p>Tu negocio nunca se queda sin luz. De noche o en días muy nublados, la red de Pereira te sigue entregando electricidad de forma automática y transparente.</p>
       </div>
 
-      <div class="step-card">
-        <div class="step-number">3</div>
-        <h4>Instalación & EEP</h4>
-        <p>Montaje RETIE y legalización del medidor bidireccional ante la Empresa de Energía de Pereira.</p>
+      <div class="faq-item">
+        <h4>¿Quién arregla los paneles si se dañan?</h4>
+        <p>Nosotros. El mantenimiento, las revisiones periódicas y el seguro contra daños o granizo están 100% incluidos en tu cuota mensual. Tú no tienes que preocuparte por nada técnico.</p>
       </div>
 
-      <div class="step-card">
-        <div class="step-number">4</div>
-        <h4>Generación & IoT</h4>
-        <p>Puesta en marcha, monitoreo en tiempo real y mantenimiento preventivo continuo sin costos extra.</p>
+      <div class="faq-item">
+        <h4>¿Qué pasa cuando se cumplen los 8 años?</h4>
+        <p>El sistema se transfiere legalmente a tu nombre por un valor simbólico. Los paneles tienen una vida útil de hasta 30 años, por lo que te quedan más de 17 años de energía prácticamente gratis.</p>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="contacto">
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>Solar as a Service (SaaS)</h4>
-        <p>Democratizando el acceso a la energía solar fotovoltaica para el tejido empresarial y agropecuario de Pereira y Risaralda.</p>
-        <p style="margin-top: 1rem; color: #fbbf24; font-weight: 700;">Universidad Tecnológica de Pereira (UTP)</p>
-      </div>
-      <div class="footer-col">
-        <h4>Sectores Atendidos</h4>
-        <a href="#calculadora">Locales y Comercios Urbanos</a>
-        <a href="#calculadora">Fincas Cafeteras y Turismo Rural</a>
-        <a href="#calculadora">Pequeña Industria y Talleres</a>
-        <a href="#diferenciadores">Corredor Pereira - Cerritos</a>
-      </div>
-      <div class="footer-col">
-        <h4>Diferenciadores Únicos</h4>
-        <p>• CAPEX \$0 con Ahorro Garantizado</p>
-        <p>• Cláusula de Portabilidad y Traslado</p>
-        <p>• Visita de Auditoría In Situ Gratuita</p>
-        <p>• Cumplimiento CREG 174 / AGPE</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Proyecto Solar as a Service Pereira | Formulación y Evaluación de Proyectos UTP</p>
-    </div>
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p><strong>Solar as a Service (SaaS)</strong> · Energía Solar Distribuida para Pereira y Risaralda</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">Proyecto Académico de Formulación y Evaluación de Proyectos · Universidad Tecnológica de Pereira (UTP)</p>
   </footer>
 
   <script>
-    function formatCOP(num) {
-      return '$ ' + Math.round(num).toLocaleString('es-CO') + ' COP';
+    function fmtCOP(valor) {
+      return '$ ' + Math.round(valor).toLocaleString('es-CO') + ' COP';
     }
 
-    function calcularAhorro() {
-      const factura = parseFloat(document.getElementById('facturaInput').value);
-      const plazo = parseInt(document.getElementById('plazoInput').value);
-      
-      document.getElementById('facturaLabel').innerText = formatCOP(factura);
-      document.getElementById('plazoLabel').innerText = plazo + ' Años (' + (plazo * 12) + ' meses)';
+    function actualizarCalculo() {
+      const factura = parseFloat(document.getElementById('rngFactura').value);
+      document.getElementById('lblFactura').innerText = fmtCOP(factura);
 
-      // Factor de ahorro según plazo: 7 años -> ~22% ahorro, 10 años -> ~28% ahorro
-      const porcentajeAhorro = plazo === 7 ? 0.22 : 0.28;
-      const ahorroMes = factura * porcentajeAhorro;
-      const cuota = factura - ahorroMes;
-      const ahorroTotal = ahorroMes * (plazo * 12);
+      // Ahorro del 25.5% sobre la factura
+      const ahorroMes = factura * 0.255;
+      const cuotaFija = factura * 0.547; // ~55% de la factura original
+      const ahorroTotal8Anios = ahorroMes * 12 * 8;
 
-      document.getElementById('ahorroMensual').innerText = formatCOP(ahorroMes);
-      document.getElementById('cuotaSaaS').innerText = formatCOP(cuota);
-      document.getElementById('ahorroTotal').innerText = formatCOP(ahorroTotal);
+      document.getElementById('lblAhorro').innerText = fmtCOP(ahorroMes);
+      document.getElementById('lblCuota').innerText = fmtCOP(cuotaFija);
+      document.getElementById('lblAhorroTotal').innerText = '$ ' + (ahorroTotal8Anios / 1000000).toFixed(1) + ' Millones';
     }
 
-    function mostrarAnatomia(tipo) {
-      document.querySelectorAll('.anatomy-view').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('.tech-tab').forEach(tab => {
-        tab.style.background = 'white';
-        tab.style.borderColor = '#cbd5e1';
-        tab.style.color = '#475569';
-      });
-
-      const activeView = document.getElementById('anatomy-' + tipo);
-      if (activeView) activeView.style.display = 'grid';
-
-      const activeTab = document.getElementById('tab-' + tipo);
-      if (activeTab) {
-        activeTab.style.background = 'var(--solar-sand)';
-        activeTab.style.borderColor = 'var(--solar-amber)';
-        activeTab.style.color = 'var(--solar-amber-dark)';
-      }
-    }
-
-    // Inicializar cálculo al cargar
-    calcularAhorro();
-
-    // Sincronización del scroll de la página con el despiece 3D de Anatomy
-    const anatomyIframe = document.getElementById('anatomyIframe');
-    function syncAnatomyScroll() {
-      if (!anatomyIframe || !anatomyIframe.contentWindow) return;
-      const rect = anatomyIframe.getBoundingClientRect();
-      const winH = window.innerHeight;
-      // El despiece progresa gradualmente cuando la sección de tecnología entra en pantalla
-      const progress = Math.max(0, Math.min(1, (winH * 0.85 - rect.top) / (winH * 0.65)));
-      anatomyIframe.contentWindow.postMessage({ explodeTarget: progress }, '*');
-    }
-
-    window.addEventListener('scroll', syncAnatomyScroll, { passive: true });
-    window.addEventListener('resize', syncAnatomyScroll, { passive: true });
+    // Inicializar al cargar
+    actualizarCalculo();
   </script>
 </body>
 </html>
